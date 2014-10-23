@@ -235,6 +235,28 @@ class EdifyGenerator(object):
                          (p.fs_type, common.PARTITION_TYPES[p.fs_type],
                           p.device, p.length, p.mount_point))
 
+  def FormatAndMountPartition(self, partition)
+    """Format the given partition, specified by its mount point (eg,
+    "/system") and then mounts it"""
+      self.script.append('ifelse(')
+      self.script.append('mount("ext4", "%s", "%s", "%s");' %
+                         (common.PARTITION_TYPES[p.fs_type],
+                          p.device, p.mount_point))
+      self.script.append('  (')
+      self.script.append('    ui_print("formating %s with ext4");' % (p.mount_point))
+      self.script.append('    format("ext", "%s", "%s", "%s", "%s");' %
+                         (p.fs_type, common.PARTITION_TYPES[p.fs_type],
+                          p.device, p.length, p.mount_point))
+      self.script.append('  ),')
+      self.script.append('  (')
+      self.script.append('    run_program("/sbin/mkfs.f2fs", "%s");' % (p.device))
+      self.script.append('    mount("f2fs", "%s", "%s", "%s");' %
+                         (common.PARTITION_TYPES[p.fs_type],
+                          p.device, p.mount_point))
+      self.script.append('    ui_print("%s is f2fs");' % (p.mount_point))
+      self.script.append(');')
+      self.mounts.add(p.mount_point)
+
   def DeleteFiles(self, file_list):
     """Delete all files in file_list."""
     if not file_list: return
