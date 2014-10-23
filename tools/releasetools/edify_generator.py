@@ -186,9 +186,19 @@ class EdifyGenerator(object):
     fstab = self.info.get("fstab", None)
     if fstab:
       p = fstab[mount_point]
-      self.script.append('mount("%s", "%s", "%s", "%s");' %
-                         (p.fs_type, common.PARTITION_TYPES[p.fs_type],
+      self.script.append('ifelse(')
+      self.script.append('mount("ext4", "%s", "%s", "%s");' %
+                         (common.PARTITION_TYPES[p.fs_type],
                           p.device, p.mount_point))
+      self.script.append('  (')
+      self.script.append('    ui_print("%s is ext4");' % (p.mount_point))
+      self.script.append('  ),')
+      self.script.append('  (')
+      self.script.append('    mount("f2fs", "%s", "%s", "%s");' %
+                         (common.PARTITION_TYPES[p.fs_type],
+                          p.device, p.mount_point))
+      self.script.append('    ui_print("%s is f2fs");' % (p.mount_point))
+      self.script.append(');')
       self.mounts.add(p.mount_point)
 
   def Unmount(self, mount_point):
