@@ -43,6 +43,9 @@ CLANG_CONFIG_EXTRA_CFLAGS += \
   -Werror=int-conversion
 
 CLANG_CONFIG_UNKNOWN_CFLAGS := \
+  -fgcse-las \
+  -fgcse-sm \
+  -fgcse-after-reload \
   -funswitch-loops \
   -fno-tree-sra \
   -finline-limit=64 \
