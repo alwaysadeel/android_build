@@ -78,7 +78,8 @@ $(combo_2nd_arch_prefix)TARGET_thumb_CFLAGS :=  -mthumb \
                         -O3 \
                         -fomit-frame-pointer \
                         -fno-strict-aliasing \
-                        -ftree-vectorize -funsafe-math-optimizations
+                        -ftree-vectorize -funsafe-math-optimizations \
+                        -Wno-strict-overflow
 
 # Set FORCE_ARM_DEBUGGING to "true" in your buildspec.mk
 # or in your environment to force a full arm build, even for
@@ -141,7 +142,7 @@ $(combo_2nd_arch_prefix)TARGET_GLOBAL_LDFLAGS += \
       -Wl,-O1 -Wl,--as-needed -Wl,--relax -Wl,--sort-common -Wl,--gc-sections \
 			$(arch_variant_ldflags)
 
-$(combo_2nd_arch_prefix)TARGET_GLOBAL_CFLAGS += -mthumb-interwork
+$(combo_2nd_arch_prefix)TARGET_GLOBAL_CFLAGS += -mthumb-interwork -Wno-strict-overflow
 
 $(combo_2nd_arch_prefix)TARGET_GLOBAL_CPPFLAGS += -O3 -fvisibility-inlines-hidden
 
@@ -150,6 +151,7 @@ $(combo_2nd_arch_prefix)TARGET_RELEASE_CFLAGS := \
 			-O3 -DNDEBUG \
 			-g \
 			-Wstrict-aliasing=2 \
+      -Wno-strict-overflow \
 			-fgcse-after-reload \
 			-frerun-cse-after-loop \
 			-frename-registers \
