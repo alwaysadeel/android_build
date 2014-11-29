@@ -71,6 +71,7 @@ $(combo_2nd_arch_prefix)TARGET_arm_CFLAGS :=    -O3 \
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
                         -funswitch-loops     \
+                        -fgcse-sm -fgcse-las -fgcse-after-reload \
                         -ftree-vectorize -funsafe-math-optimizations
 
 # Modules can choose to compile some source as thumb.
@@ -78,6 +79,7 @@ $(combo_2nd_arch_prefix)TARGET_thumb_CFLAGS :=  -mthumb \
                         -O3 \
                         -fomit-frame-pointer \
                         -fno-strict-aliasing \
+                        -fgcse-sm -fgcse-las -fgcse-after-reload \
                         -ftree-vectorize -funsafe-math-optimizations \
                         -Wno-strict-overflow
 
@@ -152,7 +154,7 @@ $(combo_2nd_arch_prefix)TARGET_RELEASE_CFLAGS := \
 			-g \
 			-Wstrict-aliasing=2 \
       -Wno-strict-overflow \
-			-fgcse-after-reload \
+      -fgcse-sm -fgcse-las -fgcse-after-reload \
 			-frerun-cse-after-loop \
 			-frename-registers \
       -ftree-vectorize -funsafe-math-optimizations
