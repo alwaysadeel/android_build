@@ -67,7 +67,7 @@ $(combo_2nd_arch_prefix)TARGET_STRIP := $($(combo_2nd_arch_prefix)TARGET_TOOLS_P
 
 $(combo_2nd_arch_prefix)TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 
-$(combo_2nd_arch_prefix)TARGET_arm_CFLAGS :=    -O2 \
+$(combo_2nd_arch_prefix)TARGET_arm_CFLAGS :=    -O3 \
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
                         -funswitch-loops     \
@@ -75,7 +75,7 @@ $(combo_2nd_arch_prefix)TARGET_arm_CFLAGS :=    -O2 \
 
 # Modules can choose to compile some source as thumb.
 $(combo_2nd_arch_prefix)TARGET_thumb_CFLAGS :=  -mthumb \
-                        -O2 \
+                        -O3 \
                         -fomit-frame-pointer \
                         -fno-strict-aliasing \
                         -ftree-vectorize -funsafe-math-optimizations
@@ -129,7 +129,7 @@ endif
 # in their exported C++ functions). Also, GCC 4.5 has already
 # removed the warning from the compiler.
 #
-$(combo_2nd_arch_prefix)TARGET_GLOBAL_CFLAGS += -Wno-psabi -Wno-array-bounds
+$(combo_2nd_arch_prefix)TARGET_GLOBAL_CFLAGS += -O3 -Wno-psabi -Wno-array-bounds
 
 $(combo_2nd_arch_prefix)TARGET_GLOBAL_LDFLAGS += \
 			-Wl,-z,noexecstack \
@@ -143,11 +143,11 @@ $(combo_2nd_arch_prefix)TARGET_GLOBAL_LDFLAGS += \
 
 $(combo_2nd_arch_prefix)TARGET_GLOBAL_CFLAGS += -mthumb-interwork
 
-$(combo_2nd_arch_prefix)TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden
+$(combo_2nd_arch_prefix)TARGET_GLOBAL_CPPFLAGS += -O3 -fvisibility-inlines-hidden
 
 # More flags/options can be added here
 $(combo_2nd_arch_prefix)TARGET_RELEASE_CFLAGS := \
-			-DNDEBUG \
+			-O3 -DNDEBUG \
 			-g \
 			-Wstrict-aliasing=2 \
 			-fgcse-after-reload \
