@@ -148,7 +148,6 @@ $(combo_2nd_arch_prefix)TARGET_GLOBAL_CPPFLAGS += -O3 -fvisibility-inlines-hidde
 # More flags/options can be added here
 $(combo_2nd_arch_prefix)TARGET_RELEASE_CFLAGS := \
 			-O3 -DNDEBUG \
-			-g \
 			-Wstrict-aliasing=2 \
       -Wno-strict-overflow \
 			-fgcse-after-reload \
