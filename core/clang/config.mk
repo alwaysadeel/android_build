@@ -46,6 +46,8 @@ CLANG_CONFIG_UNKNOWN_CFLAGS := \
   -fgcse-las \
   -fgcse-sm \
   -fgcse-after-reload \
+  -fmodulo-sched \
+  -fmodulo-sched-allow-regmoves \
   -funswitch-loops \
   -fno-tree-sra \
   -finline-limit=64 \
