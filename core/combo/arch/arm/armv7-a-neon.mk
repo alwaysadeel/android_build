@@ -7,16 +7,16 @@ ARCH_ARM_HAVE_VFP_D32           := true
 ARCH_ARM_HAVE_NEON              := true
 
 ifneq (,$(filter cortex-a15 denver,$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)))
-	arch_variant_cflags := -mcpu=cortex-a15
+	arch_variant_cflags := -mcpu=cortex-a15 -mtune=cortex-a15 -mfpu=neon-vfpv4
 else
 ifeq ($(strip $(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)),cortex-a9)
-	arch_variant_cflags := -mcpu=cortex-a9
+	arch_variant_cflags := -mcpu=cortex-a9 -mtune=cortex-a9 -mfpu=neon-vfpv4
 else
 ifneq (,$(filter cortex-a8 scorpion,$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)))
-	arch_variant_cflags := -mcpu=cortex-a8
+	arch_variant_cflags := -mcpu=cortex-a8 -mtune=cortex-a8 -mfpu=neon
 else
 ifeq ($(strip $(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)),cortex-a7)
-	arch_variant_cflags := -mcpu=cortex-a7
+	arch_variant_cflags := -mcpu=cortex-a7 -mtune=cortex-a7 -mfpu=neon
 else
 	arch_variant_cflags := -march=armv7-a
 endif
@@ -25,8 +25,7 @@ endif
 endif
 
 arch_variant_cflags += \
-    -mfloat-abi=softfp \
-    -mfpu=neon
+    -mfloat-abi=softfp
 
 arch_variant_ldflags := \
 	-Wl,--fix-cortex-a8
