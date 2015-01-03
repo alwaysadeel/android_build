@@ -44,6 +44,7 @@ LOCAL_DISABLE_STRICT := \
 	libfdlibm \
 	libvariablespeed \
 	librtp_jni \
+	libcutils \
 	libwilhelm \
 	libdownmix \
 	libldnhncr \
