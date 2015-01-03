@@ -71,6 +71,7 @@ $(combo_2nd_arch_prefix)TARGET_arm_CFLAGS :=    -O2 \
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
                         -funswitch-loops     \
+                        -fivopts \
                         -ftree-vectorize
 
 # Modules can choose to compile some source as thumb.
@@ -78,6 +79,7 @@ $(combo_2nd_arch_prefix)TARGET_thumb_CFLAGS :=  -marm \
                         -Os \
                         -fomit-frame-pointer \
                         -fno-strict-aliasing \
+                        -fivopts
                         -ftree-vectorize
 
 # Set FORCE_ARM_DEBUGGING to "true" in your buildspec.mk
@@ -153,7 +155,8 @@ $(combo_2nd_arch_prefix)TARGET_RELEASE_CFLAGS := \
 			-fgcse-after-reload \
 			-frerun-cse-after-loop \
 			-frename-registers \
-      -ftree-vectorize
+			-fivopts \
+			-ftree-vectorize
 
 libc_root := bionic/libc
 libm_root := bionic/libm
