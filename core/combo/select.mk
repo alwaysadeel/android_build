@@ -49,9 +49,9 @@ $(combo_var_prefix)HAVE_STRLCPY := 0
 $(combo_var_prefix)HAVE_STRLCAT := 0
 $(combo_var_prefix)HAVE_KERNEL_MODULES := 0
 
-$(combo_var_prefix)GLOBAL_CFLAGS := -fivopts -fno-exceptions -Wno-multichar -Wno-maybe-uninitialized -ftree-vectorize -pipe
+$(combo_var_prefix)GLOBAL_CFLAGS := -fivopts -fno-exceptions -Wno-multichar -Wno-maybe-uninitialized -ftree-vectorize -pipe -Wstrict-aliasing=2
 $(combo_var_prefix)RELEASE_CFLAGS := -O2 -g -fmodulo-sched -fmodulo-sched-allow-regmoves -fivopts -ftree-vectorize
-$(combo_var_prefix)GLOBAL_CPPFLAGS := -O2 -fivopts -pipe -Wno-non-virtual-dtor
+$(combo_var_prefix)GLOBAL_CPPFLAGS := -O2 -fivopts -pipe -Wno-non-virtual-dtor -Wstrict-aliasing=2
 $(combo_var_prefix)GLOBAL_LDFLAGS := -Wl,-O1 -Wl,--as-needed -Wl,--relax -Wl,--sort-common -Wl,--gc-sections
 $(combo_var_prefix)GLOBAL_ARFLAGS := crsPD
 $(combo_var_prefix)GLOBAL_LD_DIRS :=
