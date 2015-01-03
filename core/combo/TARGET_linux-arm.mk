@@ -74,7 +74,7 @@ $(combo_2nd_arch_prefix)TARGET_arm_CFLAGS :=    -O2 \
                         -ftree-vectorize
 
 # Modules can choose to compile some source as thumb.
-$(combo_2nd_arch_prefix)TARGET_thumb_CFLAGS :=  -mthumb \
+$(combo_2nd_arch_prefix)TARGET_thumb_CFLAGS :=  -marm \
                         -Os \
                         -fomit-frame-pointer \
                         -fno-strict-aliasing \
