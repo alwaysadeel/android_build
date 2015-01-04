@@ -35,7 +35,7 @@ TARGET_ARCH_VARIANT := armv5te
 endif
 
 ifeq ($(strip $(TARGET_GCC_VERSION_EXP)),)
-TARGET_GCC_VERSION := 4.7
+TARGET_GCC_VERSION := 4.9-linaro
 else
 TARGET_GCC_VERSION := $(TARGET_GCC_VERSION_EXP)
 endif
@@ -71,13 +71,19 @@ TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 TARGET_arm_CFLAGS :=    -O2 \
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
-                        -funswitch-loops
+                        -funswitch-loops \
+                        -fivopts \
+                        -ftree-vectorize \
+                        -pipe
 
 # Modules can choose to compile some source as thumb.
-TARGET_thumb_CFLAGS :=  -mthumb \
+TARGET_thumb_CFLAGS :=  -marm \
                         -Os \
                         -fomit-frame-pointer \
-                        -fno-strict-aliasing
+                        -fno-strict-aliasing \
+                        -fivopts \
+                        -ftree-vectorize \
+                        -pipe
 
 # Set FORCE_ARM_DEBUGGING to "true" in your buildspec.mk
 # or in your environment to force a full arm build, even for
@@ -156,7 +162,10 @@ TARGET_RELEASE_CFLAGS := \
 			-Wstrict-aliasing=2 \
 			-fgcse-after-reload \
 			-frerun-cse-after-loop \
-			-frename-registers
+			-frename-registers  \
+            -fivopts \
+            -ftree-vectorize \
+            -pipe
 
 libc_root := bionic/libc
 libm_root := bionic/libm
