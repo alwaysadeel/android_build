@@ -2444,5 +2444,5 @@ check_bash_version && {
     fi
     done
 }
-
+export USE_PREBUILT_CHROMIUM=1
 export ANDROID_BUILD_TOP=$(gettop)
