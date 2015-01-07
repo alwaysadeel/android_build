@@ -31,8 +31,8 @@ endif
 
 # Clang flags for all host or target rules
 CLANG_CONFIG_EXTRA_ASFLAGS :=
-CLANG_CONFIG_EXTRA_CFLAGS :=
-CLANG_CONFIG_EXTRA_CPPFLAGS :=
+CLANG_CONFIG_EXTRA_CFLAGS := -O3 -Qunused-arguments -Wno-unknown-warning-option -D__compiler_offsetof=__builtin_offsetof
+CLANG_CONFIG_EXTRA_CPPFLAGS := -O3 -Qunused-arguments -Wno-unknown-warning-option -D__compiler_offsetof=__builtin_offsetof
 CLANG_CONFIG_EXTRA_LDFLAGS :=
 
 CLANG_CONFIG_EXTRA_CFLAGS += \
@@ -47,6 +47,7 @@ CLANG_CONFIG_UNKNOWN_CFLAGS := \
   -fno-tree-sra \
   -finline-limit=64 \
   -Wno-psabi \
+  -Wno-non-virtual-dtor \
   -Wno-unused-but-set-variable \
   -Wno-unused-but-set-parameter \
   -Wmaybe-uninitialized \
@@ -56,8 +57,8 @@ CLANG_CONFIG_UNKNOWN_CFLAGS := \
 
 # Clang flags for all host rules
 CLANG_CONFIG_HOST_EXTRA_ASFLAGS :=
-CLANG_CONFIG_HOST_EXTRA_CFLAGS :=
-CLANG_CONFIG_HOST_EXTRA_CPPFLAGS :=
+CLANG_CONFIG_HOST_EXTRA_CFLAGS := 
+CLANG_CONFIG_HOST_EXTRA_CPPFLAGS := 
 CLANG_CONFIG_HOST_EXTRA_LDFLAGS :=
 
 # Clang flags for all target rules
