@@ -56,8 +56,8 @@ CLANG_CONFIG_UNKNOWN_CFLAGS := \
 
 # Clang flags for all host rules
 CLANG_CONFIG_HOST_EXTRA_ASFLAGS :=
-CLANG_CONFIG_HOST_EXTRA_CFLAGS :=
-CLANG_CONFIG_HOST_EXTRA_CPPFLAGS :=
+CLANG_CONFIG_HOST_EXTRA_CFLAGS := -O3 -fvectorize -Qunused-arguments -Wno-unknown-warning-option
+CLANG_CONFIG_HOST_EXTRA_CPPFLAGS := -O3 -fvectorize -Qunused-arguments -Wno-unknown-warning-option
 CLANG_CONFIG_HOST_EXTRA_LDFLAGS :=
 
 # Clang flags for all target rules
