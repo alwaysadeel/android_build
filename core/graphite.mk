@@ -105,6 +105,7 @@ LOCAL_DISABLE_GRAPHITE := \
     libzopfli \
     zipalign \
     rsg-generator \
+    unrar \
     libunz \
     adb \
     libzipfile \
