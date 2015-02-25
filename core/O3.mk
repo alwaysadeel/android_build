@@ -23,8 +23,6 @@ LOCAL_DISABLE_O3 := \
 
 O3_FLAGS := \
         -O3 \
-        -Wno-error=array-bounds \
-        -Wno-error=strict-overflow \
         -Wno-error=maybe-uninitialized
 
 ifneq (1,$(words $(filter $(LOCAL_DISABLE_O3),$(LOCAL_MODULE))))
